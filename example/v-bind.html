@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>v-bind</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<h1>v-bind，缩写：冒号+属性，比如:src</h1>
+	<hr>
+	<div id="app">
+	    <img v-bind:src="imgSrc" width="600px">
+	    <h3>绑定CSS样式</h3>
+	    <ol>
+	    	<li>直接绑定class样式</li>
+	    	<div :class="className">直接绑定class样式</div>
+	    </ol>
+	</div>
+
+	<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			imgSrc:'http://pic1.win4000.com/wallpaper/4/57b6a7f82383b.jpg',
+		}
+	})
+	</script>
+</body>
+</html>
