@@ -5,17 +5,41 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>v-bind</title>
 	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<style type="text/css">
+		.classA{color: red;}
+		.classB{font-size: 150%;}
+		.class1{color: green;}
+		.class2{border: 1px red solid;}
+	</style>
 </head>
 <body>
-	<h1>v-bind，缩写：冒号+属性，比如:src</h1>
+	<h1>v-bind</h1>
 	<hr>
 	<div id="app">
-	    <img v-bind:src="imgSrc" width="600px">
+		<h3>绑定属性</h3>
+	    <p><img v-bind:src="imgSrc" width="300px"></p>
+	    <p><a :href="webUrl" target="_blank">百度</a></p>
+	    <hr>
+
 	    <h3>绑定CSS样式</h3>
 	    <ol>
-	    	<li>直接绑定class样式</li>
-	    	<div :class="className">直接绑定class样式</div>
+	    	<li :class="className">直接绑定class样式</li>
+	    	<li :class="{classB:isOk}">绑定class中的判断</li>
+	    	<li :class="[class1, class2]">绑定class中的数组</li>
+	    	<li :class="isOk?class1:classA">绑定class中的三元运算</li>
 	    </ol>
+	    <hr>
+	    <p>
+	    	<input type="checkbox" v-model="isOk">
+	    	<label>isOk={{isOk}}</label>
+	    </p>
+		<hr>
+
+		<h3>绑定style</h3>
+		<ol>
+			<li :style={color:yellowColor,fontSize:font}>直接绑定style</li>
+			<li :style="styleObject">绑定style中的对象</li>
+		</ol>
 	</div>
 
 	<script type="text/javascript">
@@ -23,6 +47,19 @@
 		el: '#app',
 		data: {
 			imgSrc:'http://pic1.win4000.com/wallpaper/4/57b6a7f82383b.jpg',
+			webUrl: 'http://www.baidu.com',
+			className: 'classA',
+			classA: 'classA',
+			classB: 'classB',
+			class1: 'class1',
+			class2: 'class2',
+			isOk: true,
+			yellowColor: 'yellow',
+			font: '20px',
+			styleObject: {
+				background: '#ff0011',
+				fontSize: '20px'
+			}
 		}
 	})
 	</script>
